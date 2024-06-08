@@ -1,0 +1,74 @@
+{
+  "workouts": {
+    "day-1": {
+      "exercises": {
+        "ex1": "Dumbbell Overhead Press",
+        "ex2": "Dumbbell Front Raises",
+        "ex3": "Dumbbell Lateral Raises",
+        "ex4": "Dumbbell Shrugs",
+        "ex5": "Reverse Pec Deck Fly"
+      },
+      "targetMuscle": "Shoulders"
+    },
+    "day-2": {
+      "exercises": {
+        "ex1": "Pushups",
+        "ex2": "Chest Press",
+        "ex3": "Multi Press",
+        "ex4": "Peck Deck Fly",
+        "ex5": "Dumbbell Pullover"
+      },
+      "targetMuscle": "Chest"
+    },
+    "day-3": {
+      "exercises": {
+        "ex1": "Pull Ups",
+        "ex2": "Pull Down Machine",
+        "ex3": "Seated Row Machine",
+        "ex4": "Wide Grip Pull Down",
+        "ex5": "Seated Low Cable Row",
+        "ex6": "T Bar Row",
+        "ex7": "Dumbbell Pullover",
+        "ex8": "Back Extensions"
+      },
+      "targetMuscle": "Back"
+    },
+    "day-4": {
+      "exercises": {
+        "ex1": "Standing Barbell Curls",
+        "ex2": "Reverse Barbell Curls",
+        "ex3": "Dumbbell Bicep Curls",
+        "ex4": "Bicep Curl Machine",
+        "ex5": "Hammer Curls",
+        "ex6": "Overhead Tricep Extensions",
+        "ex7": "Tricep Pushdowns",
+        "ex8": "Seated Dips Machine",
+        "ex9": "Bench Dips"
+      },
+      "targetMuscle": "Arms"
+    },
+    "day-5": {
+      "exercises": {
+        "ex1": "Squats",
+        "ex2": "Lunges",
+        "ex3": "V-Squats",
+        "ex4": "Leg Press",
+        "ex5": "Leg Extensions",
+        "ex6": "Leg Curls",
+        "ex7": "Calf Raises"
+      },
+      "targetMuscle": "Legs"
+    },
+    "day-6": {
+      "exercises": {
+        "ex1": "Jumping Jacks",
+        "ex2": "Knee Taps",
+        "ex3": "Standing Alternate Toe Touches",
+        "ex4": "Farmer Walk",
+        "ex5": "Crunches",
+        "ex6": "Leg Raises"
+      },
+      "targetMuscle": "Cardio"
+    }
+  }
+}
