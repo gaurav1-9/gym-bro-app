@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../properties/app_colors.dart';
 
 class WorkoutList extends StatefulWidget {
   final int workoutDay;
@@ -23,11 +26,34 @@ class _WorkoutListState extends State<WorkoutList> {
 
   @override
   Widget build(BuildContext context) {
-    print(exercise['exercises'].values);
     return ListView.builder(
       itemCount: exercise['exercises'].length,
       itemBuilder: (ctx, index) {
-        return Text(exercise['exercises']['ex${index + 1}']);
+        return Column(
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.build_circle_outlined,
+                  color: AppColor.silver,
+                ),
+                SizedBox(
+                  width: 10.w,
+                ),
+                Text(
+                  exercise['exercises']['ex${index + 1}'],
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: AppColor.smokyBlack,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+          ],
+        );
       },
     );
   }

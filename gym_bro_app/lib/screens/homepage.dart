@@ -80,7 +80,7 @@ class _HomepageState extends State<Homepage> {
                   Expanded(
                     child: WorkoutList(
                       workouts: workouts,
-                      workoutDay: 2,
+                      workoutDay: day.weekday,
                     ),
                   ),
                 ],
