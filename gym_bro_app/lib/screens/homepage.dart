@@ -1,10 +1,14 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gym_bro_app/properties/app_colors.dart';
 import 'package:http/http.dart' as http;
 
 import '../widget/homescreen_appbar.dart';
+import '../widget/homescreen_loader.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -48,7 +52,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: (!workoutLoading)
+      body: (workoutLoading)
           ? Padding(
               padding: EdgeInsets.only(top: 40.h, left: 20.w, right: 20.w),
               child: Column(
@@ -59,7 +63,7 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             )
-          : const Center(child: CircularProgressIndicator()),
+          : const WorkoutLoader(),
     );
   }
 }
