@@ -68,14 +68,14 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       body: (workoutLoading == LoaderStatus.notLoading)
           ? Padding(
-              padding: EdgeInsets.only(top: 40.h, left: 20.w, right: 20.w),
+              padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 20.w),
               child: Column(
                 children: [
                   WorkoutHeading(
                     workoutType: workoutType[day.weekday - 1],
                   ),
                   SizedBox(
-                    height: 63.h,
+                    height: 23.h,
                   ),
                   Expanded(
                     child: WorkoutList(

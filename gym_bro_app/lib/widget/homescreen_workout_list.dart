@@ -33,12 +33,12 @@ class _WorkoutListState extends State<WorkoutList> {
           children: [
             Row(
               children: [
-                const Icon(
+                Icon(
                   Icons.done,
-                  color: AppColor.silver,
+                  color: AppColor.silver.withOpacity(0.3),
                 ),
                 SizedBox(
-                  width: 10.w,
+                  width: 15.w,
                 ),
                 Text(
                   exercise['exercises']['ex${index + 1}'],
