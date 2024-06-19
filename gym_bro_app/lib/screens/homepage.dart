@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 
 import '../properties/loader.dart';
 import '../widget/homescreen_appbar.dart';
 import '../widget/homescreen_loader.dart';
+import '../widget/homescreen_workout_list.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -18,6 +20,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   LoaderStatus workoutLoading = LoaderStatus.isLoading;
+  Map<String, dynamic> workouts = {};
   late DateTime day;
   List<String> workoutType = [
     'Shoulder',
@@ -46,7 +49,7 @@ class _HomepageState extends State<Homepage> {
           setState(() {
             workoutLoading = LoaderStatus.notLoading;
           });
-          print(jsonDecode(response.body));
+          workouts = jsonDecode(response.body);
         }
       }
     } on TimeoutException catch (_) {
@@ -70,6 +73,15 @@ class _HomepageState extends State<Homepage> {
                 children: [
                   WorkoutHeading(
                     workoutType: workoutType[day.weekday - 1],
+                  ),
+                  SizedBox(
+                    height: 63.h,
+                  ),
+                  Expanded(
+                    child: WorkoutList(
+                      workouts: workouts,
+                      workoutDay: 2,
+                    ),
                   ),
                 ],
               ),
