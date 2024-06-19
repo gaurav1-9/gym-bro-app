@@ -1,12 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gym_bro_app/properties/app_colors.dart';
 import 'package:http/http.dart' as http;
 
+import '../properties/loader.dart';
 import '../widget/homescreen_appbar.dart';
 import '../widget/homescreen_loader.dart';
 
@@ -18,7 +17,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  bool workoutLoading = true;
+  LoaderStatus workoutLoading = LoaderStatus.isLoading;
   late DateTime day;
   List<String> workoutType = [
     'Shoulder',
@@ -38,21 +37,33 @@ class _HomepageState extends State<Homepage> {
   Future<void> getWorkouts() async {
     String workoutsURL =
         "https://gym-bro-ef156-default-rtdb.firebaseio.com/workouts.json";
-    final response = await http.get(Uri.parse(workoutsURL));
     try {
-      if (jsonDecode(response.body) != null) {
-        setState(() {
-          workoutLoading = false;
-        });
-        print(jsonDecode(response.body));
+      final response = await http
+          .get(Uri.parse(workoutsURL))
+          .timeout(const Duration(seconds: 15));
+      if (response.statusCode == 200) {
+        if (jsonDecode(response.body) != null) {
+          setState(() {
+            workoutLoading = LoaderStatus.notLoading;
+          });
+          print(jsonDecode(response.body));
+        }
       }
-    } catch (e) {}
+    } on TimeoutException catch (_) {
+      setState(() {
+        workoutLoading = LoaderStatus.errorLoading;
+      });
+    } catch (e) {
+      setState(() {
+        workoutLoading = LoaderStatus.noNetwork;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: (workoutLoading)
+      body: (workoutLoading == LoaderStatus.notLoading)
           ? Padding(
               padding: EdgeInsets.only(top: 40.h, left: 20.w, right: 20.w),
               child: Column(
@@ -63,7 +74,9 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             )
-          : const WorkoutLoader(),
+          : WorkoutLoader(
+              workoutLoading: workoutLoading,
+            ),
     );
   }
 }
