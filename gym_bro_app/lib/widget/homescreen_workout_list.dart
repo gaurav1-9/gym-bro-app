@@ -59,7 +59,7 @@ class _WorkoutListState extends State<WorkoutList> {
                   Icon(
                     Icons.done,
                     color: (tickerCheck[index])
-                        ? AppColor.pear
+                        ? AppColor.pear.withRed(10).withBlue(30)
                         : AppColor.silver.withOpacity(0.3),
                   ),
                   SizedBox(
