@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../properties/loader.dart';
 import '../widget/homescreen_appbar.dart';
@@ -34,6 +34,7 @@ class _HomepageState extends State<Homepage> {
   void initState() {
     super.initState();
     day = DateTime.now();
+
     getWorkouts();
   }
 

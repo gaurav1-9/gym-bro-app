@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../properties/app_colors.dart';
 
@@ -18,10 +19,28 @@ class WorkoutList extends StatefulWidget {
 
 class _WorkoutListState extends State<WorkoutList> {
   late Map<String, dynamic> exercise;
+  late SharedPreferences pref;
+  List<bool> tickerCheck = List.filled(12, false);
   @override
   void initState() {
     super.initState();
     exercise = widget.workouts['day-${widget.workoutDay}'];
+    _tickerCheck();
+  }
+
+  Future<void> _tickerCheck() async {
+    pref = await SharedPreferences.getInstance();
+    setState(() {
+      tickerCheck = List.generate(exercise['exercises'].length,
+          (index) => pref.getBool('ex${index + 1}') ?? false);
+    });
+  }
+
+  Future<void> toggleTicker(int index) async {
+    setState(() {
+      tickerCheck[index] = !tickerCheck[index];
+    });
+    pref.setBool('ex${index + 1}', tickerCheck[index]);
   }
 
   @override
@@ -29,30 +48,37 @@ class _WorkoutListState extends State<WorkoutList> {
     return ListView.builder(
       itemCount: exercise['exercises'].length,
       itemBuilder: (ctx, index) {
-        return Column(
-          children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.done,
-                  color: AppColor.silver.withOpacity(0.3),
-                ),
-                SizedBox(
-                  width: 15.w,
-                ),
-                Text(
-                  exercise['exercises']['ex${index + 1}'],
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    color: AppColor.smokyBlack,
+        return GestureDetector(
+          onDoubleTap: () {
+            toggleTicker(index);
+          },
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.done,
+                    color: (tickerCheck[index])
+                        ? AppColor.pear
+                        : AppColor.silver.withOpacity(0.3),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 15.h,
-            ),
-          ],
+                  SizedBox(
+                    width: 15.w,
+                  ),
+                  Text(
+                    exercise['exercises']['ex${index + 1}'],
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      color: AppColor.smokyBlack,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+            ],
+          ),
         );
       },
     );
