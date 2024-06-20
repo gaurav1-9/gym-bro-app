@@ -34,8 +34,21 @@ class _HomepageState extends State<Homepage> {
   void initState() {
     super.initState();
     day = DateTime.now();
-
+    if (day.hour == 00) {
+      resetSharedPref();
+    }
     getWorkouts();
+  }
+
+  Future<void> resetSharedPref() async {
+    final pref = await SharedPreferences.getInstance();
+    final keys = pref.getKeys();
+
+    for (String key in keys) {
+      if (key.startsWith('ex')) {
+        await pref.setBool(key, false);
+      }
+    }
   }
 
   Future<void> getWorkouts() async {
