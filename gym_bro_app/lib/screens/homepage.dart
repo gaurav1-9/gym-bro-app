@@ -83,22 +83,24 @@ class _HomepageState extends State<Homepage> {
       body: (workoutLoading == LoaderStatus.notLoading)
           ? Padding(
               padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 20.w),
-              child: Column(
-                children: [
-                  WorkoutHeading(
-                    workoutType: workoutType[day.weekday - 1],
-                  ),
-                  SizedBox(
-                    height: 23.h,
-                  ),
-                  Expanded(
-                    child: WorkoutList(
-                      workouts: workouts,
-                      workoutDay: day.weekday,
-                    ),
-                  ),
-                ],
-              ),
+              child: (day.weekday < 6)
+                  ? Column(
+                      children: [
+                        WorkoutHeading(
+                          workoutType: workoutType[day.weekday - 1],
+                        ),
+                        SizedBox(
+                          height: 23.h,
+                        ),
+                        Expanded(
+                          child: WorkoutList(
+                            workouts: workouts,
+                            workoutDay: day.weekday,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Center(),
             )
           : WorkoutLoader(
               workoutLoading: workoutLoading,
