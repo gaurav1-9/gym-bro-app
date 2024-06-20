@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            textTheme: GoogleFonts.robotoCondensedTextTheme(),
-          ),
+              textTheme: GoogleFonts.robotoCondensedTextTheme(),
+              scaffoldBackgroundColor: const Color(0xffffffff)),
           home: const Homepage(),
         );
       },

@@ -24,11 +24,15 @@ class RestDay extends StatelessWidget {
             style: TextStyle(
               color: AppColor.smokyBlack,
               fontSize: 45.sp,
+              height: 0.8,
             ),
+          ),
+          SizedBox(
+            height: 10.h,
           ),
           Image.asset(
             height: MediaQuery.of(context).size.height * .35,
-            'assets/img/RestDay.png',
+            'assets/img/Relaxation.gif',
           ),
           SizedBox(
             height: 100.h,
