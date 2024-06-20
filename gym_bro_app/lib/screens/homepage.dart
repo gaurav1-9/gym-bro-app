@@ -84,7 +84,7 @@ class _HomepageState extends State<Homepage> {
       body: (workoutLoading == LoaderStatus.notLoading)
           ? Padding(
               padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 20.w),
-              child: (day.weekday != 6)
+              child: (day.weekday == 6)
                   ? const RestDay()
                   : Column(
                       children: [
