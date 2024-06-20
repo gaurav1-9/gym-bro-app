@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../properties/loader.dart';
 import '../widget/homescreen_appbar.dart';
 import '../widget/homescreen_loader.dart';
+import '../widget/homescreen_rest_day.dart';
 import '../widget/homescreen_workout_list.dart';
 
 class Homepage extends StatefulWidget {
@@ -83,8 +84,9 @@ class _HomepageState extends State<Homepage> {
       body: (workoutLoading == LoaderStatus.notLoading)
           ? Padding(
               padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 20.w),
-              child: (day.weekday < 6)
-                  ? Column(
+              child: (day.weekday != 6)
+                  ? const RestDay()
+                  : Column(
                       children: [
                         WorkoutHeading(
                           workoutType: workoutType[day.weekday - 1],
@@ -99,8 +101,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ],
-                    )
-                  : Center(),
+                    ),
             )
           : WorkoutLoader(
               workoutLoading: workoutLoading,
