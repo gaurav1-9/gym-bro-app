@@ -64,27 +64,36 @@ class WorkoutLoader extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-          (workoutLoading == LoaderStatus.errorLoading)
-              ? ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    fixedSize: Size(210.w, 20.h),
-                    backgroundColor: AppColor.pear,
-                  ),
-                  onPressed: tryAgain,
-                  child: const Text(
-                    "Try Again",
+          if (workoutLoading == LoaderStatus.errorLoading)
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+                fixedSize: Size(210.w, 20.h),
+                backgroundColor: AppColor.pear,
+              ),
+              onPressed: tryAgain,
+              child: Wrap(
+                children: [
+                  Text(
+                    "Retry",
                     style: TextStyle(
                       color: AppColor.smokyBlack,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                )
-              : const SizedBox(
-                  height: 0,
-                ),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  const Icon(
+                    Icons.refresh,
+                    color: AppColor.smokyBlack,
+                  ),
+                ],
+              ),
+            )
         ],
       ),
     );
