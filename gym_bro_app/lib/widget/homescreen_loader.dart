@@ -6,7 +6,7 @@ import '../properties/loader.dart';
 
 class WorkoutLoader extends StatelessWidget {
   final LoaderStatus workoutLoading;
-  final Function tryAgain;
+  final VoidCallback tryAgain;
   const WorkoutLoader({
     super.key,
     required this.workoutLoading,
@@ -64,6 +64,27 @@ class WorkoutLoader extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+          (workoutLoading == LoaderStatus.errorLoading)
+              ? ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    fixedSize: Size(210.w, 20.h),
+                    backgroundColor: AppColor.pear,
+                  ),
+                  onPressed: tryAgain,
+                  child: const Text(
+                    "Try Again",
+                    style: TextStyle(
+                      color: AppColor.smokyBlack,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                )
+              : const SizedBox(
+                  height: 0,
+                ),
         ],
       ),
     );

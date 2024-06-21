@@ -53,6 +53,9 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> getWorkouts() async {
+    setState(() {
+      workoutLoading = LoaderStatus.isLoading;
+    });
     String workoutsURL =
         "https://gym-bro-ef156-default-rtdb.firebaseio.com/workouts.json";
     try {
