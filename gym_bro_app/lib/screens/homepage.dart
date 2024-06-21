@@ -105,6 +105,7 @@ class _HomepageState extends State<Homepage> {
             )
           : WorkoutLoader(
               workoutLoading: workoutLoading,
+              tryAgain: getWorkouts,
             ),
     );
   }

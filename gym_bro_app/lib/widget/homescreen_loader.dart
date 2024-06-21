@@ -6,7 +6,12 @@ import '../properties/loader.dart';
 
 class WorkoutLoader extends StatelessWidget {
   final LoaderStatus workoutLoading;
-  const WorkoutLoader({super.key, required this.workoutLoading});
+  final Function tryAgain;
+  const WorkoutLoader({
+    super.key,
+    required this.workoutLoading,
+    required this.tryAgain,
+  });
 
   @override
   Widget build(BuildContext context) {
