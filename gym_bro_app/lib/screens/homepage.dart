@@ -11,6 +11,7 @@ import '../widget/homescreen_appbar.dart';
 import '../widget/homescreen_loader.dart';
 import '../widget/homescreen_rest_day.dart';
 import '../widget/homescreen_workout_list.dart';
+import 'workouts.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -39,6 +40,14 @@ class _HomepageState extends State<Homepage> {
       resetSharedPref();
     }
     getWorkouts();
+  }
+
+  MaterialPageRoute workoutsPage() {
+    return MaterialPageRoute(
+      builder: (context) => WorkoutsPage(
+        workouts: workouts,
+      ),
+    );
   }
 
   Future<void> resetSharedPref() async {
@@ -87,6 +96,7 @@ class _HomepageState extends State<Homepage> {
                       children: [
                         WorkoutHeading(
                           workoutType: workoutType[day.weekday - 1],
+                          workoutsPage: workoutsPage,
                         ),
                         SizedBox(
                           height: 23.h,

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../properties/app_colors.dart';
-import '../screens/workouts.dart';
 
 class WorkoutHeading extends StatelessWidget {
+  final MaterialPageRoute Function() workoutsPage;
   final String workoutType;
   const WorkoutHeading({
     super.key,
     required this.workoutType,
+    required this.workoutsPage,
   });
 
   @override
@@ -40,11 +40,7 @@ class WorkoutHeading extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const WorkoutsPage(),
-                ));
+            Navigator.push(context, workoutsPage());
           },
           child: Column(
             children: [
