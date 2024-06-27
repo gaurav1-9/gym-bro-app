@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gym_bro_app/properties/app_colors.dart';
 
 import '../widget/daywiseWorkouts/workouts_arms.dart';
 import '../widget/daywiseWorkouts/workouts_back.dart';
@@ -8,6 +7,7 @@ import '../widget/daywiseWorkouts/workouts_cardio.dart';
 import '../widget/daywiseWorkouts/workouts_chest.dart';
 import '../widget/daywiseWorkouts/workouts_legs.dart';
 import '../widget/daywiseWorkouts/wourkouts_shoulder.dart';
+import '../widget/workouts_bottomappbar.dart';
 
 class WorkoutsPage extends StatelessWidget {
   final Map<String, dynamic> workouts;
@@ -66,17 +66,10 @@ class WorkoutsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-          height: 55.h,
-          decoration: BoxDecoration(
-            color: AppColor.pear,
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(15.r),
-            ),
-          ),
-          child: const Row(
-            children: [],
-          )),
+      bottomNavigationBar: WorkoutsBottomAppBar(
+        workoutImgNames: workouts,
+        slideTo: slider,
+      ),
     );
   }
 }
