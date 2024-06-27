@@ -43,13 +43,7 @@ class _HomepageState extends State<Homepage> {
 
   Future<void> resetSharedPref() async {
     final pref = await SharedPreferences.getInstance();
-    final keys = pref.getKeys();
-
-    for (String key in keys) {
-      if (key.startsWith('ex')) {
-        await pref.setBool(key, false);
-      }
-    }
+    await pref.clear();
   }
 
   Future<void> getWorkouts() async {
