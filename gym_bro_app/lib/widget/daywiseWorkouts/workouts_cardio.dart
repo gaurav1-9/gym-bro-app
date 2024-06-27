@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../workouts_exerciselist.dart';
 import '../workouts_headings.dart';
 
 class Cardio extends StatelessWidget {
@@ -19,6 +20,9 @@ class Cardio extends StatelessWidget {
           WorkoutListHeading(
             workoutType: workout['targetMuscle'],
           ),
+          ExerciseList(
+            workout: workout['exercises'],
+          )
         ],
       ),
     );

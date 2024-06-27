@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gym_bro_app/properties/app_colors.dart';
 
 import '../widget/daywiseWorkouts/workouts_arms.dart';
 import '../widget/daywiseWorkouts/workouts_back.dart';
@@ -65,6 +66,17 @@ class WorkoutsPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: Container(
+          height: 55.h,
+          decoration: BoxDecoration(
+            color: AppColor.pear,
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(15.r),
+            ),
+          ),
+          child: const Row(
+            children: [],
+          )),
     );
   }
 }
