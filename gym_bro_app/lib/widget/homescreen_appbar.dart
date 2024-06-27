@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../properties/app_colors.dart';
+import '../screens/workouts.dart';
 
 class WorkoutHeading extends StatelessWidget {
   final String workoutType;
@@ -36,21 +38,55 @@ class WorkoutHeading extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
-              Radius.circular(8.r),
-            ),
-            color: AppColor.pear,
-          ),
-          height: 65.h,
-          width: 65.h,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Image.asset(
-              'assets/img/$workoutType.png',
-              alignment: Alignment.center,
-            ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WorkoutsPage(),
+                ));
+          },
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(8.r),
+                  ),
+                  color: AppColor.pear,
+                ),
+                height: 65.h,
+                width: 65.h,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Image.asset(
+                    'assets/img/$workoutType.png',
+                    alignment: Alignment.center,
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(8.r),
+                  ),
+                  color: AppColor.pear,
+                ),
+                padding: EdgeInsets.only(
+                  bottom: 5.h,
+                ),
+                width: 65.h,
+                child: Text(
+                  "Workouts",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    height: 0.7.h,
+                    color: AppColor.smokyBlack,
+                  ),
+                ),
+              ),
+            ],
           ),
         )
       ],
