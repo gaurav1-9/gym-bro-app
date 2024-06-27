@@ -25,7 +25,7 @@ class _HomepageState extends State<Homepage> {
   Map<String, dynamic> workouts = {};
   late DateTime day;
   List<String> workoutType = [
-    'Shoulder',
+    'Shoulders',
     'Chest',
     'Back',
     'Arms',

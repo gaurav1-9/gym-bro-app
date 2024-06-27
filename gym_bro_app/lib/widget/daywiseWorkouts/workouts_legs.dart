@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../properties/app_colors.dart';
+import '../workouts_headings.dart';
 
 class Legs extends StatelessWidget {
   final Map<String, dynamic> workout;
@@ -17,20 +18,8 @@ class Legs extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Workout routine for',
-              style: TextStyle(
-                color: AppColor.silver,
-                fontSize: 20.sp,
-              ),
-            ),
-            Text(
-              workout['targetMuscle'],
-              style: TextStyle(
-                color: AppColor.smokyBlack,
-                fontSize: 45.sp,
-                height: .8.h,
-              ),
+            WorkoutListHeading(
+              workoutType: workout['targetMuscle'],
             ),
           ],
         ),
