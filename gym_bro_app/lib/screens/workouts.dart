@@ -20,7 +20,7 @@ class WorkoutsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 20.w),
+        padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 10.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -20,7 +20,7 @@ class WorkoutListHeading extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Today's workout routine",
+              "Workout routine for",
               style: TextStyle(
                 color: AppColor.silver,
                 fontSize: 20.sp,
@@ -36,47 +36,22 @@ class WorkoutListHeading extends StatelessWidget {
             ),
           ],
         ),
-        Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(8.r),
-                ),
-                color: AppColor.pear,
-              ),
-              height: 65.h,
-              width: 65.h,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Image.asset(
-                  'assets/img/$workoutType.png',
-                  alignment: Alignment.center,
-                ),
-              ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(8.r),
             ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(8.r),
-                ),
-                color: AppColor.pear,
-              ),
-              padding: EdgeInsets.only(
-                bottom: 5.h,
-              ),
-              width: 65.h,
-              child: Text(
-                "Workouts",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  height: 0.7.h,
-                  color: AppColor.smokyBlack,
-                ),
-              ),
+            color: AppColor.pear,
+          ),
+          height: 65.h,
+          width: 65.h,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Image.asset(
+              'assets/img/$workoutType.png',
+              alignment: Alignment.center,
             ),
-          ],
+          ),
         )
       ],
     );

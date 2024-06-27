@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../properties/app_colors.dart';
 import '../workouts_headings.dart';
 
 class Arms extends StatelessWidget {
@@ -13,17 +12,15 @@ class Arms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            WorkoutListHeading(
-              workoutType: workout['targetMuscle'],
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.only(right: 10.w),
+      child: Column(
+        children: [
+          WorkoutListHeading(
+            workoutType: workout['targetMuscle'],
+          ),
+        ],
+      ),
     );
   }
 }
