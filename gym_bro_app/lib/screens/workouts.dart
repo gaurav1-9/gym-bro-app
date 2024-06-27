@@ -36,7 +36,7 @@ class WorkoutsPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 25.h,
+              height: 15.h,
             ),
             Expanded(
               child: PageView(
